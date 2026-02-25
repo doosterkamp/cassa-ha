@@ -12,6 +12,7 @@
     update_cache: true
   environment:
     MACHINE: "{{ home_assistant_ha_machine }}"
+    SKIP_DISTRO_CHECK: "1"
 
 - name: Install services for MQTT bridge addon
   ansible.builtin.copy:

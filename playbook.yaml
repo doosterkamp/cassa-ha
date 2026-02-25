@@ -18,6 +18,15 @@
             yum install -y python3
           fi
         fi
+
+    - name: Check Debian version for homeassistant-supervised compatibility
+      shell: |
+        if grep -q "bookworm" /etc/os-release || grep -q "VERSION_ID=\"12" /etc/os-release; then
+          echo "WARNING: Debian 12 (bookworm) is not officially supported by homeassistant-supervised"
+          echo "Attempting workaround by setting SKIP_DISTRO_CHECK..."
+        fi
+      changed_when: false
+      register: debian_check
   roles:
     - role: homey_fixes
       tags: ['homey']
