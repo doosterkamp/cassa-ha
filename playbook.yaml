@@ -1,6 +1,8 @@
 ---
 - name: "Create Homey Assistant Restore Image"
   hosts: image
+  vars:
+    ansible_python_interpreter: auto_silent
   gather_facts: false
   roles:
     - role: homey_fixes
